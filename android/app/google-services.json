@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1016838608854",
+    "project_id": "jb-messaging",
+    "storage_bucket": "jb-messaging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016838608854:android:2ab5fb89cac7e5098db677",
+        "android_client_info": {
+          "package_name": "com.lionuncle.firebase_messages"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016838608854-37i8pbfhupgfjn6pfm4ihq75oupdr922.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lionuncle.firebase_messages",
+            "certificate_hash": "1d4c35057290e85c8826903de0e68609affbe5e0"
+          }
+        },
+        {
+          "client_id": "1016838608854-e3qo5jisn68d7s9ieo2vtu5oo5ca2f4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5IInnsSWd3HFbST1oqXJxqgCy8XyMRkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016838608854-e3qo5jisn68d7s9ieo2vtu5oo5ca2f4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

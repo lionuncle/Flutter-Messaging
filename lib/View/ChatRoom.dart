@@ -1,4 +1,6 @@
 import 'package:firebase_messages/Model/ChatRoomModel.dart';
+import 'package:firebase_messages/Model/MessagesModel.dart';
+import 'package:firebase_messages/View/Messages.dart';
 import 'package:firebase_messages/View/SelectUserToChat.dart';
 import 'package:firebase_messages/ViewModel/ChatRoomViewModel.dart';
 import 'package:firebase_messages/animations/SlideRight.dart';
@@ -44,7 +46,7 @@ class _ChatRoomState extends State<ChatRoom> {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: (){
-
+                                    Navigator.of(context).push(SlideRightRoute(page: Messages()));
 
                               },
                               child: Container(

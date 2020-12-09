@@ -1,3 +1,4 @@
+import 'Utilities/AppSizes.dart';
 import 'file:///D:/1-FLUTTER/Flutter-Messaging/lib/View/ChatRoom.dart';
 import 'package:flutter/material.dart';
 
@@ -35,10 +36,12 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
+
   }
   @override
   Widget build(BuildContext context) {
     loadNext();
+    AppSizes.initializeSize(context);
     return Scaffold(
       backgroundColor: Colors.blue[400],
       body: SafeArea(

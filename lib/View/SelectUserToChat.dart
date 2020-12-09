@@ -1,23 +1,23 @@
-import 'package:firebase_messages/Model/ChatRoomModel.dart';
-import 'package:firebase_messages/View/SelectUserToChat.dart';
+import 'package:firebase_messages/Model/User.dart';
 import 'package:firebase_messages/ViewModel/ChatRoomViewModel.dart';
+import 'package:firebase_messages/ViewModel/UserViewModel.dart';
+import 'package:firebase_messages/Widgets/Widgets.dart';
 import 'package:firebase_messages/animations/SlideRight.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-class ChatRoom extends StatefulWidget {
+class SelectUserToChat extends StatefulWidget {
   @override
-  _ChatRoomState createState() => _ChatRoomState();
+  _SelectUserToChatState createState() => _SelectUserToChatState();
 }
 
-class _ChatRoomState extends State<ChatRoom> {
-  Future<List<ChatRoomModel>> futureLoadChatRooms;
+class _SelectUserToChatState extends State<SelectUserToChat>{
+
+  Future<List<User>> futureLoadUsers;
 
   @override
   void initState() {
     super.initState();
-    futureLoadChatRooms = ChatRoomViewModel().getAllChatRoomsOfCurrentUser();
+    futureLoadUsers = UserViewModel().getAllUsers();
   }
 
 
@@ -28,9 +28,9 @@ class _ChatRoomState extends State<ChatRoom> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            FutureBuilder<List<ChatRoomModel>>(
-              future: futureLoadChatRooms,
-              builder: (BuildContext context, AsyncSnapshot<List<ChatRoomModel>> snapshot) {
+            FutureBuilder<List<User>>(
+              future: futureLoadUsers,
+              builder: (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
@@ -43,9 +43,13 @@ class _ChatRoomState extends State<ChatRoom> {
 
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
-                              onTap: (){
-
-
+                              onTap: ()async{
+                                // Scaffold.of(context).showSnackBar(SnackBar(
+                                //   content: Text(index.toString()),
+                                // ));
+                                await ChatRoomViewModel().CreateNewRoomBetween(UserViewModel().getCurrentUser().id, snapshot.data.elementAt(index).id);
+                                ApplicationToast.getSuccessToast(msg: "ChatRoom created");
+                                Navigator.of(context).pop();
                               },
                               child: Container(
                                   height: 100,
@@ -64,7 +68,7 @@ class _ChatRoomState extends State<ChatRoom> {
                                               )
                                           )),
 
-                                      Text(snapshot.data.elementAt(index).userIds.elementAt(1)),
+                                      Text(snapshot.data.elementAt(index).name),
 
                                     ],
                                   )
@@ -75,20 +79,10 @@ class _ChatRoomState extends State<ChatRoom> {
 
                         ),
                       ),
-
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: FloatingActionButton(
-                          onPressed: (){
-                            Navigator.of(context).push(SlideRightRoute(page: SelectUserToChat()));
-                          },
-                          child: Icon(Icons.message),
-                        ),
-                      )
                     ],
                   );
                 } else {
-                  return Center(child: Text("LOADING Chat rooms..."));
+                  return Center(child: Text("LOADING USERS..."));
                 }
               },
             ),

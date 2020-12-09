@@ -4,7 +4,7 @@ class User{
   User({this.id,this.name});
 
 
-  Map<String, dynamic> toJson() =>
+  Map<dynamic, dynamic> toJson() =>
       {
         'id': this.id,
         'name': this.name,

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatRoomModel {
@@ -14,10 +13,11 @@ class ChatRoomModel {
     this.userIds.add(userTwoId);
   }
 
-  Map<dynamic, dynamic> toJson() =>
+  Map<String, dynamic> toJson() =>
       {
         'userIds': this.userIds,
       };
+
   fromJson(Map parsedJson) {
     this.userIds = parsedJson['userIds'] ?? '';
 

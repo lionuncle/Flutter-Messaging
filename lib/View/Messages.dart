@@ -27,6 +27,7 @@ class _MessagesState extends State<Messages> {
 
   //////////////////////////////////////////////////////
   User host = User(id: "id", name: "Aqib");
+  bool valueChanged = false;
 
 //  User otherUser = User(id: "fjsdklfjkl",name: "Other");
 //   MessagesModel message = MessagesModel(senderId: "fjsdklfjkl",msg: "Hello brother, How are you?");
@@ -37,6 +38,11 @@ class _MessagesState extends State<Messages> {
   @override
   void initState() {
     otherUser = UserViewModel().getUserWithId(currentChatRoom.userIds.last);
+    Firestore.instance.collection('Messages').where('roomId', isEqualTo: currentChatRoom.id).snapshots().listen((newMsgQuery) {
+        setState(() {
+          valueChanged = true;
+        });
+    });
     super.initState();
   }
 

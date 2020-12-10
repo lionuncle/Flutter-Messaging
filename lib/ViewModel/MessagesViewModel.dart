@@ -14,6 +14,7 @@ class MessagesViewModel{
   }
 
   Future<List<MessagesModel>> getAllMessagesOfRoom(@required String roomId) async{
+
     QuerySnapshot msgQuery = await db
         .where('roomId', isEqualTo: roomId)
         .getDocuments();
@@ -24,6 +25,7 @@ class MessagesViewModel{
       msg.fromJson(documentSnapshot.data);
       allMessages.add(msg);
     }
+
     return allMessages;
 
   }

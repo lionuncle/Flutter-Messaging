@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messages/Model/ChatRoomModel.dart';
-import 'package:firebase_messages/View/ChatRoom.dart';
 import 'package:firebase_messages/ViewModel/UserViewModel.dart';
 import 'package:firebase_messages/Widgets/Widgets.dart';
 

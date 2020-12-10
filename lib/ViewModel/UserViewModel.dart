@@ -20,8 +20,13 @@ class UserViewModel{
     QuerySnapshot userQuery = await db
         .where('id', isEqualTo: uid)
         .getDocuments();
-    DocumentSnapshot documentSnapshot = userQuery.documents[0];
-    return User().fromJson(documentSnapshot.data);
+
+
+    DocumentSnapshot documentSnapshot = userQuery.documents.first;
+    User user = User();
+    user.fromJson(documentSnapshot.data);
+    return user;
+
   }
 
   User getCurrentUser() => User(id: "45kls-1dfeifd-45421cd-dfjeioj",name:"CURRENT USER");

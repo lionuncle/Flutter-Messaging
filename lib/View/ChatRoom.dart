@@ -46,7 +46,8 @@ class _ChatRoomState extends State<ChatRoom> {
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               onTap: (){
-                                    Navigator.of(context).push(SlideRightRoute(page: Messages()));
+
+                                    Navigator.of(context).push(SlideRightRoute(page: Messages(currentChatRoom: snapshot.data.elementAt(index),)));
 
                               },
                               child: Container(

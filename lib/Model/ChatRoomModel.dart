@@ -16,10 +16,12 @@ class ChatRoomModel {
   Map<String, dynamic> toJson() =>
       {
         'userIds': this.userIds,
+        'id': this.id,
       };
 
   fromJson(Map parsedJson) {
     this.userIds = parsedJson['userIds'] ?? '';
+    this.id = parsedJson['id'] ?? '';
 
   }
 
